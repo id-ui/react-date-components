@@ -138,8 +138,7 @@ describe('DateInput', () => {
       .set({ date: day })
       .format(outputFormat);
 
-    user.clear(getByTestId('input'));
-    user.type(getByTestId('input'), disabledValue);
+    await user.type(getByTestId('input'), disabledValue);
     expect(onChange).toHaveBeenCalledTimes(0);
   });
 
