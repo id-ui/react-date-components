@@ -200,13 +200,38 @@ export interface DateRangeInputProps extends DateRangePickerProps, CommonDateInp
 export class DateRangeInput extends React.Component<DateRangeInputProps> {}
 
 export interface TimeOptionProps {
+    /**
+     * React key
+     */
     key: string;
+    /**
+     * is option selected
+     */
     isSelected: boolean;
+    /**
+     * onClick event handler
+     */
     onClick?: React.EventHandler<void>;
+    /**
+     * option
+     */
     data: object;
+    /**
+     * option value key
+     */
     valueKey: string;
+    /**
+     * option label key
+     */
     labelKey: string;
+    /**
+     * divider between hours and minutes
+     */
     divider: React.ReactNode;
+    /**
+     * whether option leads to another option or not
+     */
+    withRedirect?: boolean;
 }
 
 export interface TimePickerProps {
