@@ -17,6 +17,8 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-size: 12px;
+  color: ${ifProp('withRedirect', '#d2d2d2', '#b4b4b4')};
   ${ifProp(
     'isSelected',
     css`
@@ -31,10 +33,6 @@ export const Container = styled.div`
           color: #a569ed;
         }
       }
-    `,
-    css`
-      font-size: 12px;
-      color: #b4b4b4;
     `
   )}
 `;

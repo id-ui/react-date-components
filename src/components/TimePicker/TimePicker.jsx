@@ -5,6 +5,11 @@ import { Container } from './styled';
 import { getTimeOptions } from './helpers';
 import TimeOption from './components/TimeOption';
 
+const markOptionWithRedirect = (option) => ({
+  ...option,
+  withRedirect: true,
+});
+
 function TimePicker({
   options: providedOptions,
   timeSlot,
@@ -17,8 +22,9 @@ function TimePicker({
   visibleOptionsCount,
   divider,
   renderOption,
-  emptyOptionPlaceholder,
   className,
+  showDefaultSelectionIfNoValue,
+  defaultSelectedValue,
 }) {
   const containerRef = useRef();
 
@@ -42,25 +48,30 @@ function TimePicker({
         timeSlot,
         valueKey,
         labelKey,
-        format: `HH${divider}mm`,
+        divider,
         outputFormat,
       });
-    const filteredOptions = _.reject(allOptions, isTimeDisabled);
-
-    const emptyOptions = Array.from(
-      { length: visibleOptionsCount - 1 },
-      (_, index) => ({
-        [valueKey]: index,
-        [labelKey]: emptyOptionPlaceholder || `--${divider}--`,
-      })
-    );
 
     const optionsBeforeActiveCount = Math.floor(visibleOptionsCount / 2);
 
+    const filteredOptions = _.reject(allOptions, isTimeDisabled).map(
+      (option, index) => ({
+        ...option,
+        index: optionsBeforeActiveCount + index,
+      })
+    );
+
     return [
-      ...emptyOptions.slice(0, optionsBeforeActiveCount),
+      ...filteredOptions
+        .slice(
+          filteredOptions.length - optionsBeforeActiveCount - 1,
+          filteredOptions.length - 1
+        )
+        .map(markOptionWithRedirect),
       ...filteredOptions,
-      ...emptyOptions.slice(optionsBeforeActiveCount),
+      ...filteredOptions
+        .slice(1, optionsBeforeActiveCount + 1)
+        .map(markOptionWithRedirect),
     ];
   }, [
     providedOptions,
@@ -71,7 +82,6 @@ function TimePicker({
     valueKey,
     outputFormat,
     timeSlot,
-    emptyOptionPlaceholder,
   ]);
 
   const handleScroll = useCallback(
@@ -100,6 +110,12 @@ function TimePicker({
     );
   }, []);
 
+  const selectedValue =
+    _.isEmpty(value) && showDefaultSelectionIfNoValue
+      ? defaultSelectedValue ||
+        options[Math.floor(visibleOptionsCount / 2)].value
+      : value;
+
   return (
     <Container
       onScroll={handleScroll}
@@ -108,17 +124,21 @@ function TimePicker({
       aria-label="select time"
       className={className}
     >
-      {options.map((option, index) =>
-        renderOption({
-          key: `${index}-${_.get(option, valueKey)}`,
-          isSelected: value === _.get(option, valueKey),
-          onClick: () => handleTimeItemClick(index),
+      {options.map((option, index) => {
+        const optionValue = _.get(option, valueKey);
+        return renderOption({
+          key: `${index}-${optionValue}-${option.withRedirect}`,
+          isSelected: selectedValue === optionValue,
+          onClick: _.isUndefined(option.index)
+            ? undefined
+            : () => handleTimeItemClick(option.index),
           data: option,
           valueKey,
           labelKey,
           divider,
-        })
-      )}
+          withRedirect: option.withRedirect,
+        });
+      })}
     </Container>
   );
 }
@@ -135,8 +155,9 @@ TimePicker.propTypes = {
   visibleOptionsCount: PropTypes.number,
   divider: PropTypes.string,
   renderOption: PropTypes.func,
-  emptyOptionPlaceholder: PropTypes.string,
   className: PropTypes.string,
+  showDefaultSelectionIfNoValue: PropTypes.bool,
+  defaultSelectedValue: PropTypes.string,
 };
 
 TimePicker.defaultProps = {
@@ -149,6 +170,7 @@ TimePicker.defaultProps = {
   divider: ':',
   visibleOptionsCount: 7,
   renderOption: (props) => <TimeOption {...props} />,
+  showDefaultSelectionIfNoValue: true,
 };
 
 export default TimePicker;

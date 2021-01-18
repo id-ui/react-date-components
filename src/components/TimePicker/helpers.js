@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { CURRENT_DATE } from 'config/constants';
 
 const HOURS_PER_DAY = 24;
@@ -7,12 +8,13 @@ export const getTimeOptions = ({
   timeSlot,
   valueKey,
   labelKey,
-  format,
   outputFormat,
+  divider,
 }) => {
   const timeSlotsPerHour = MINUTES_PER_HOUR / timeSlot;
+  const format = `HH${divider}mm`;
 
-  return Array.from(
+  const result = Array.from(
     { length: HOURS_PER_DAY * timeSlotsPerHour + 1 },
     (_, index) => {
       const date = CURRENT_DATE.clone().set({ minutes: index * timeSlot });
@@ -23,4 +25,12 @@ export const getTimeOptions = ({
       };
     }
   );
+
+  const last = _.last(result);
+
+  if (last.value === `00${divider}00`) {
+    last.value = `24${divider}00`;
+  }
+
+  return result;
 };

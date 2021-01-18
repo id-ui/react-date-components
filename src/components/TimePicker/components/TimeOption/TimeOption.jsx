@@ -9,6 +9,7 @@ function TimeOption({
   divider,
   onClick,
   className,
+  withRedirect,
 }) {
   const itemLabel = _.get(data, labelKey);
   const isEmpty = itemLabel === '';
@@ -22,6 +23,7 @@ function TimeOption({
       className={className}
       role="option"
       aria-label={itemLabel}
+      withRedirect={withRedirect}
     >
       <TimePart>{hours}</TimePart>
       <Divider>{!isEmpty && divider}</Divider>

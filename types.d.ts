@@ -202,7 +202,7 @@ export class DateRangeInput extends React.Component<DateRangeInputProps> {}
 export interface TimeOptionProps {
     key: string;
     isSelected: boolean;
-    onClick: React.EventHandler<void>;
+    onClick?: React.EventHandler<void>;
     data: object;
     valueKey: string;
     labelKey: string;
@@ -228,6 +228,16 @@ export interface TimePickerProps {
      * current value
      */
     value?: string;
+    /**
+     * mark defaultSelectedValue as selected if no value
+     * @default true
+     */
+    showDefaultSelectionIfNoValue?: boolean;
+    /**
+     * default selected value
+     * @default first option value
+     */
+    defaultSelectedValue?: string;
     /**
      * option value key
      * @default value
@@ -260,11 +270,6 @@ export interface TimePickerProps {
      * custom option renderer
      */
     renderOption?: (props: TimeOptionProps) => React.ReactChild;
-    /**
-     * empty option placeholder, set to "" if you want don't want show any value
-     * @default `--${divider}--`
-     */
-    emptyOptionPlaceholder?: string;
 }
 
 export class TimePicker extends React.Component<TimePickerProps> {}

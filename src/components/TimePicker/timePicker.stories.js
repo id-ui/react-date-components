@@ -18,16 +18,6 @@ export default {
       description:
         'custom array of time options (shape {[valueKey]: String, [labelKey]: String})',
     },
-    emptyOptionPlaceholder: {
-      control: 'text',
-      description:
-        'empty option placeholder, set to "" if you want don\'t want show any value',
-      table: {
-        defaultValue: {
-          summary: '`--${divider}--`',
-        },
-      },
-    },
     timeSlot: {
       control: 'number',
       description: 'time slot in minutes for generating options',
@@ -35,6 +25,25 @@ export default {
       table: {
         defaultValue: {
           summary: 60,
+        },
+      },
+    },
+    showDefaultSelectionIfNoValue: {
+      control: 'boolean',
+      description: 'mark defaultSelectedValue as selected if no value',
+      defaultValue: true,
+      table: {
+        defaultValue: {
+          summary: true,
+        },
+      },
+    },
+    defaultSelectedValue: {
+      control: 'text',
+      description: 'default selected value',
+      table: {
+        defaultValue: {
+          summary: 'first option value',
         },
       },
     },
