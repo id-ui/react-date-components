@@ -1187,22 +1187,22 @@
     styled-components "^5.2.1"
     styled-tools "^1.7.2"
 
-"@idui/react-inputs@^1.1.7":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@idui/react-inputs/-/react-inputs-1.1.8.tgz#605f2f189695fbb27b9a0dc82951d0b7ae562c87"
-  integrity sha512-lDPUjYLaJeLIgv3YDvQ+cRUvKWVYehVoUMuyPcxLou7znyG9+5SQSqGxBWXRdIaygWnz1naoGLL5KsIq9EdDUQ==
+"@idui/react-inputs@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@idui/react-inputs/-/react-inputs-1.1.10.tgz#fd91d9cb2b911013f9aacb29e70eb092b2d7a5c3"
+  integrity sha512-lcPNkA7X12v6nGTn6LH6lVQBtzyP3IZBvBJShgAX6vM1krkqKJw8EYSnMmojlOb9M6f+Jn7baPTx8Xki2DMM5g==
   dependencies:
     "@idui/react-icon" "^1.0.5"
-    "@idui/react-mask-input" "^1.1.4"
+    "@idui/react-mask-input" "^1.2.0"
     lodash "^4.17.20"
     prop-types "^15.7.2"
     styled-components "^5.2.1"
     styled-tools "^1.7.2"
 
-"@idui/react-mask-input@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@idui/react-mask-input/-/react-mask-input-1.1.4.tgz#c9794640c319ee0b848aa729068860da1918ad45"
-  integrity sha512-hx3X3KtP35RtLbiidVFyMonJGkbpu2Zejn6WtjtyUjEUWxBg8+EY2reAgUqPD1Pu59Cnrmv66Qn/Z22Yaviw3A==
+"@idui/react-mask-input@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@idui/react-mask-input/-/react-mask-input-1.2.0.tgz#3fc8efee621cdbd02e7fc04f41fb0956d04135bf"
+  integrity sha512-d77dQJbP87FqVfFKvzEazZi8PUkf3lPjc6tMDoRid5ucZxGQGvY/WZhPXUKXMz83JNYQGskMrld+l6qtIo0aLA==
   dependencies:
     prop-types "^15.7.2"
     styled-components "^5.2.1"

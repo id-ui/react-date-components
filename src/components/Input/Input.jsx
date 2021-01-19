@@ -44,26 +44,22 @@ function Input(
     ref.current?.focus();
   }, [ref]);
 
-  const handlePaste = useCallback(
-    (e) => {
+  const processPastedValue = useCallback(
+    (pastedValue, e) => {
       if (type === 'time' || !_.isEmpty(e.target.value)) {
-        return;
+        return pastedValue;
       }
 
-      e.preventDefault();
-
-      const pastedText = (e.clipboardData || window.clipboardData).getData(
-        'text'
-      );
-
       try {
-        const newValue = moment(pastedText, guessMomentFormat(pastedText));
+        const newValue = moment(pastedValue, guessMomentFormat(pastedValue));
         if (newValue.isValid()) {
-          onChange(newValue.format(outputFormat));
+          return newValue.format(outputFormat);
         }
-      } catch {} // eslint-disable-line
+      } catch {
+        return pastedValue;
+      }
     },
-    [onChange, outputFormat, type]
+    [outputFormat, type]
   );
 
   const colors = { ...TextInput.defaultProps.colors, ...providedColors };
@@ -89,8 +85,8 @@ function Input(
       disabled={disabled}
       rightAddon={rightAddon}
       fitWidthToMask
-      onPaste={handlePaste}
       onChange={onChange}
+      processPastedValue={processPastedValue}
       {...props}
     />
   );
