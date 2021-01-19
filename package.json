@@ -1,6 +1,6 @@
 {
   "name": "@idui/react-date-components",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "React Calendar Component",
   "author": "kaprisa57@gmail.com",
   "license": "MIT",
@@ -106,6 +106,7 @@
     "framer-motion": "^3.1.4",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
+    "moment-guess": "^1.2.1",
     "prop-types": "^15.7.2",
     "styled-components": "^5.2.1",
     "styled-tools": "^1.7.2"
