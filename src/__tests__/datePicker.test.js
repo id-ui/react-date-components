@@ -5,6 +5,7 @@ import { axe } from 'jest-axe';
 import { renderHeader } from 'testUtils';
 import { DatePicker } from 'components/DatePicker';
 import { CURRENT_DATE } from 'config/constants';
+import { CalendarBase } from '../components/CalendarBase';
 
 const renderDatePicker = (props) =>
   render(<DatePicker renderHeader={renderHeader} {...props} />);
@@ -14,6 +15,25 @@ describe('DatePicker', () => {
     const { container } = renderDatePicker();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  it('calls onChangePage when page changed', () => {
+    const { getByTestId, getAllByTestId } = renderDatePicker();
+    const header = getByTestId('header');
+    const controls = getAllByTestId('control');
+    expect(header).toHaveTextContent(
+      CURRENT_DATE.format(CalendarBase.defaultProps.headerFormat)
+    );
+    user.click(controls[0]);
+    expect(header).toHaveTextContent(
+      CURRENT_DATE.clone()
+        .subtract(1, 'months')
+        .format(CalendarBase.defaultProps.headerFormat)
+    );
+    user.click(controls[1]);
+    expect(header).toHaveTextContent(
+      CURRENT_DATE.format(CalendarBase.defaultProps.headerFormat)
+    );
   });
 
   it('calls onChange with clicked date as Moment object', () => {

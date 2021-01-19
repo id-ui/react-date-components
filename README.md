@@ -6,6 +6,14 @@
 [![Coverage Status](https://coveralls.io/repos/github/id-ui/react-date-components/badge.svg?branch=main)](https://coveralls.io/github/id-ui/react-date-components?branch=main)
 [![LICENSE](https://img.shields.io/github/license/id-ui/react-date-components)](https://github.com/id-ui/react-date-components/blob/main/LICENSE)
 
+
+## Advantages
+- Easily customisable;
+- uses styled-components
+- supports custom renderers for almost all components
+- validates any date format and does not require specifying validation
+- guesses date format on paste
+
 ## Install
 
 ```bash

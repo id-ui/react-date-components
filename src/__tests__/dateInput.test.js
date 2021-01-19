@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { renderHeader } from 'testUtils';
@@ -92,6 +92,27 @@ describe('DateInput', () => {
     user.type(input, value);
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(value);
+  });
+
+  it('processes pasted date', async () => {
+    const onChange = jest.fn();
+    const outputFormat = 'DD.MM.YYYY';
+    const { getByTestId } = renderDateInput({
+      onChange,
+      outputFormat,
+    });
+    const input = getByTestId('input');
+
+    const value = CURRENT_DATE.clone().set({ date: 25 });
+
+    input.focus();
+    fireEvent.paste(input, {
+      clipboardData: {
+        getData: () => value.format('YYYY-MM-DD'),
+      },
+    });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(value.format(outputFormat));
   });
 
   it('clears value', async () => {

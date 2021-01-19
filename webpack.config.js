@@ -16,6 +16,7 @@ module.exports = {
     'styled-components',
     'styled-tools',
     'moment',
+    'moment-guess',
     'framer-motion',
     '@idui/react-icon',
     '@idui/react-inputs',

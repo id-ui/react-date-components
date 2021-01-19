@@ -1,8 +1,11 @@
 {
   "plugins": [
     ["@babel/plugin-proposal-optional-chaining"],
-    ["babel-plugin-styled-components", {
-      "namespace": "idui-dc"
-    }]
+    [
+      "babel-plugin-styled-components",
+      {
+        "namespace": "idui-dc"
+      }
+    ]
   ]
 }
