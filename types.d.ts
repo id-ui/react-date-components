@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Moment} from "moment";
-import {StyledComponent} from "styled-components";
+import {Moment} from 'moment';
+import {StyledComponent} from 'styled-components';
+import {InputColors} from '@idui/react-inputs';
 
 interface CalendarHeaderProps {
     /**
@@ -25,15 +26,25 @@ interface CalendarHeaderProps {
      */
     controlSize?: string;
     /**
-     * arrow color
-     * @default '#A569ED'
+     * colors theme
      */
-    color?: string;
-    /**
-     * arrow hover color
-     * @default '#7546AE'
-     */
-    hoverColor?: string;
+    colors?: {
+        /**
+         * arrow color
+         * @default '#A569ED'
+         */
+        color: string;
+        /**
+         * arrow hover color
+         * @default '#7546AE'
+         */
+        hoverColor: string;
+        /**
+         * month and year color
+         * @default '#7546AE'
+         */
+        monthAndYear: string;
+    };
     /**
      * header className
      */
@@ -46,6 +57,11 @@ export const Week: StyledComponent;
 export const Day: StyledComponent;
 
 export type DayState = 'default' | 'current' | 'active' | 'disabled'
+
+interface ColorsShape {
+    background?: string;
+    color?: string;
+}
 
 interface CommonProps {
     /**
@@ -69,6 +85,23 @@ interface CommonProps {
      * @default (weekDays) => (<Week>{weekDays.map((item) => <Day key={item}>{item}</Day>)}</Week>)
      */
     renderWeek?: (weekDays: array[]) => React.ReactChild;
+    /**
+     * colors theme
+     */
+    colors?: {
+        day: {
+            default: ColorsShape;
+            active: ColorsShape;
+            current: ColorsShape;
+            disabled: ColorsShape;
+            hover: ColorsShape;
+        };
+        controls: {
+            color: string;
+            hoverColor: string;
+            monthAndYear: string;
+        };
+    };
 }
 
 export interface CalendarProps extends CommonProps {
@@ -178,6 +211,24 @@ interface CommonDateInputProps {
      * @default true
      */
     closeOnSelect?: boolean;
+    /**
+     * colors theme
+     */
+    colors?: {
+        day: {
+            default: ColorsShape;
+            active: ColorsShape;
+            current: ColorsShape;
+            disabled: ColorsShape;
+            hover: ColorsShape;
+        };
+        input: InputColors;
+        controls: {
+            color: string;
+            hoverColor: string;
+            monthAndYear: string;
+        };
+    };
 }
 
 export interface DateInputProps extends DatePickerProps, CommonDateInputProps {
@@ -232,6 +283,14 @@ export interface TimeOptionProps {
      * whether option leads to another option or not
      */
     withRedirect?: boolean;
+    /**
+     * colors theme
+     */
+    colors?: {
+        active: ColorsShape;
+        default: ColorsShape;
+        disabled: ColorsShape;
+    };
 }
 
 export interface TimePickerProps {
@@ -295,6 +354,16 @@ export interface TimePickerProps {
      * custom option renderer
      */
     renderOption?: (props: TimeOptionProps) => React.ReactChild;
+    /**
+     * colors theme
+     */
+    colors?: {
+        time: {
+            active: ColorsShape;
+            default: ColorsShape;
+            disabled: ColorsShape;
+        };
+    };
 }
 
 export class TimePicker extends React.Component<TimePickerProps> {}
@@ -310,14 +379,17 @@ export interface TimeInputProps extends TimePickerProps {
      * input placeholder
      */
     placeholder?: string;
+    /**
+     * colors theme
+     */
+    colors?: {
+        time: {
+            active: ColorsShape;
+            default: ColorsShape;
+            disabled: ColorsShape;
+        };
+        input: InputColors;
+    };
 }
 
 export class TimeInput extends React.Component<TimeInputProps> {}
-
-export type DAY_STATES = {
-    default: string;
-    current: string;
-    active: string;
-    hover: string;
-    disabled: string;
-}
