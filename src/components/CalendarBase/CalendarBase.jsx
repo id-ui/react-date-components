@@ -2,6 +2,7 @@ import React, { Fragment, useCallback } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { WEEK_DAYS } from 'config/constants';
+import { colors } from 'config/theme';
 import Grid from './components/Grid';
 import CalendarHeader from './components/Header';
 import { Week, Day } from './styled';
@@ -13,6 +14,7 @@ function CalendarBase({
   headerFormat,
   renderHeader,
   renderWeek,
+  colors,
 }) {
   const updateMonth = useCallback(
     (direction) => {
@@ -35,8 +37,9 @@ function CalendarBase({
         goToPreviousPage,
         date,
         format: headerFormat,
+        colors: colors.controls,
       })}
-      {renderWeek(WEEK_DAYS)}
+      {renderWeek(WEEK_DAYS, colors.day)}
       <Grid date={date} renderDay={renderDay} />
     </Fragment>
   );
@@ -54,11 +57,14 @@ CalendarBase.propTypes = {
 CalendarBase.defaultProps = {
   onChangePage: _.noop,
   headerFormat: 'MMMM YYYY',
-  renderHeader: (props) => <CalendarHeader {...props} />,
-  renderWeek: (weekDays) => (
+  renderHeader: CalendarHeader,
+  colors,
+  renderWeek: (weekDays, colors) => (
     <Week>
       {weekDays.map((item) => (
-        <Day key={item}>{item}</Day>
+        <Day key={item} colors={colors}>
+          {item}
+        </Day>
       ))}
     </Week>
   ),

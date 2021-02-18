@@ -1,3 +1,5 @@
+import { colors } from 'config/theme';
+
 export default {
   onChangePage: {
     action: 'onChangePage',
@@ -33,6 +35,16 @@ export default {
       defaultValue: {
         summary: `(weekDays) => (<Week>{weekDays.map((item) => <Day key={item}>{item}</Day>)}</Week>). 
 Day and Week exported (import { Day, Week } from '@idui/react-date-components')`,
+      },
+    },
+  },
+  colors: {
+    control: 'object',
+    description: 'colors theme',
+    defaultValue: colors,
+    table: {
+      defaultValue: {
+        summary: JSON.stringify(colors),
       },
     },
   },

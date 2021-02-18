@@ -5,7 +5,6 @@ import moment from 'moment';
 import Popover from '@idui/react-popover';
 import { DateRangePicker } from 'components/DateRangePicker';
 import Input from 'components/Input';
-import { TextInput } from '@idui/react-inputs';
 import { InputsWrapper } from './styled';
 
 const INPUT_INDEXES = {
@@ -30,7 +29,7 @@ function DateRangeInput({
   renderWeek,
   renderDay,
   headerFormat,
-  colors: providedColors,
+  colors,
   ...inputProps
 }) {
   const startOfRangeInputRef = useRef();
@@ -107,8 +106,6 @@ function DateRangeInput({
     }
   }, []);
 
-  const colors = { ...TextInput.defaultProps.colors, ...providedColors };
-
   return (
     <Popover
       content={
@@ -122,6 +119,7 @@ function DateRangeInput({
           renderWeek={renderWeek}
           renderDay={renderDay}
           headerFormat={headerFormat}
+          colors={colors}
         />
       }
       placement={
@@ -150,7 +148,7 @@ function DateRangeInput({
           id={id ? `${id}[0]` : undefined}
           name={name ? `${name}[0]` : undefined}
           tabIndex={tabIndex || undefined}
-          colors={colors}
+          colors={colors.input}
           {...inputProps}
         />
         <Input
@@ -167,7 +165,7 @@ function DateRangeInput({
           id={id ? `${id}[1]` : undefined}
           name={name ? `${name}[1]` : undefined}
           tabIndex={tabIndex ? tabIndex + 1 : undefined}
-          colors={colors}
+          colors={colors.input}
           {...inputProps}
         />
       </InputsWrapper>

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ifProp } from 'styled-tools';
+import { ifProp, withProp } from 'styled-tools';
 
 export const TimePart = styled.span`
   margin: 4px 0;
@@ -18,22 +18,32 @@ export const Container = styled.div`
   align-items: center;
   cursor: pointer;
   font-size: 12px;
-  color: ${ifProp('withRedirect', '#d2d2d2', '#b4b4b4')};
-  ${ifProp(
-    'isSelected',
-    css`
-      font-size: 14px;
-      ${TimePart} {
-        &:first-child {
-          background-color: #b787f1;
-          color: #ffffff;
-        }
-        &:last-child {
-          border: 1px solid #a569ed;
-          color: #a569ed;
-        }
-      }
-    `
+  ${withProp('colors', (colors) =>
+    colors
+      ? css`
+          color: ${ifProp(
+            'withRedirect',
+            colors.disabled.color,
+            colors.default.color
+          )};
+          ${ifProp(
+            'isSelected',
+            css`
+              font-size: 14px;
+              ${TimePart} {
+                &:first-child {
+                  background-color: ${colors.active.background};
+                  color: ${colors.active.color};
+                }
+                &:last-child {
+                  border: 1px solid ${colors.active.background};
+                  color: ${colors.active.background};
+                }
+              }
+            `
+          )}
+        `
+      : ''
   )}
 `;
 

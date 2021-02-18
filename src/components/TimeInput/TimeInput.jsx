@@ -18,6 +18,7 @@ function TimeInput({
   renderOption,
   maskPlaceholder,
   placeholder,
+  colors,
   ...inputProps
 }) {
   const inputRef = useRef();
@@ -58,6 +59,7 @@ function TimeInput({
           visibleOptionsCount={visibleOptionsCount}
           divider={divider}
           renderOption={renderOption}
+          colors={colors}
         />
       }
       placement="bottom"
@@ -79,6 +81,7 @@ function TimeInput({
         onFocus={handleFocus}
         ref={inputRef}
         isActive={isOpen}
+        colors={colors.input}
         {...inputProps}
       />
     </Popover>

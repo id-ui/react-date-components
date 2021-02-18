@@ -16,6 +16,7 @@ function DatePicker({
   isDateDisabled,
   onChangePage,
   renderDay,
+  colors,
   ...props
 }) {
   const [date, setDate] = useState(() => getCalendarDate(value));
@@ -37,12 +38,14 @@ function DatePicker({
       {...props}
       date={date}
       onChangePage={handleChangePage}
+      colors={colors}
       renderDay={(date) => {
         const isDisabled = isDateDisabled(date);
         return renderDay({
           date,
           state: getDayState(date, value, isDisabled),
           onClick: isDisabled ? undefined : () => onChange(date),
+          colors: colors.day,
         });
       }}
     />
@@ -63,8 +66,8 @@ DatePickerWrapped.defaultProps = {
   ...CalendarBase.defaultProps,
   onChange: _.noop,
   isDateDisabled: _.constant(false),
-  renderDay: ({ date, state, onClick }) => (
-    <DatePickerDay state={state} onClick={onClick}>
+  renderDay: ({ date, state, onClick, colors }) => (
+    <DatePickerDay state={state} onClick={onClick} colors={colors}>
       {date.date()}
     </DatePickerDay>
   ),

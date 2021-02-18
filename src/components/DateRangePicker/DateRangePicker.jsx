@@ -14,6 +14,7 @@ function DateRangePicker({
   isDateDisabled,
   onChangePage,
   renderDay,
+  colors,
   ...props
 }) {
   const [date, setDate] = useState(() => _.get(providedValue, 0) || moment());
@@ -38,10 +39,12 @@ function DateRangePicker({
       {...props}
       date={date}
       onChangePage={handleChangePage}
+      colors={colors}
       renderDay={(date) => {
         const isDisabled = isDateDisabled(date);
         return renderDay({
           date,
+          colors: colors.day,
           ...getDateRangeDayState(date, value, isDisabled),
           ...(isDisabled ? {} : rangeHandlers),
         });
@@ -66,8 +69,8 @@ DateRangePickerWrapped.defaultProps = {
   ...CalendarBase.defaultProps,
   onChange: _.noop,
   isDateDisabled: _.constant(false),
-  renderDay: ({ date, state, ...handlers }) => (
-    <DatePickerDay state={state} {...handlers}>
+  renderDay: ({ date, state, colors, ...handlers }) => (
+    <DatePickerDay state={state} colors={colors} {...handlers}>
       {date.date()}
     </DatePickerDay>
   ),

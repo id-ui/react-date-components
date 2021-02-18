@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+import { colors } from 'config/theme';
 import { Container } from './styled';
 import { getTimeOptions } from './helpers';
 import TimeOption from './components/TimeOption';
@@ -25,6 +26,7 @@ function TimePicker({
   className,
   showDefaultSelectionIfNoValue,
   defaultSelectedValue,
+  colors,
 }) {
   const containerRef = useRef();
 
@@ -137,6 +139,7 @@ function TimePicker({
           labelKey,
           divider,
           withRedirect: option.withRedirect,
+          colors: colors.time,
         });
       })}
     </Container>
@@ -169,8 +172,9 @@ TimePicker.defaultProps = {
   outputFormat: 'HH:mm',
   divider: ':',
   visibleOptionsCount: 7,
-  renderOption: (props) => <TimeOption {...props} />,
+  renderOption: TimeOption,
   showDefaultSelectionIfNoValue: true,
+  colors,
 };
 
 export default TimePicker;

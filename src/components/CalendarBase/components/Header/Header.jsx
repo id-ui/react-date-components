@@ -8,8 +8,7 @@ function Header({
   date,
   format,
   controlSize,
-  color,
-  hoverColor,
+  colors,
   className,
 }) {
   return (
@@ -18,19 +17,19 @@ function Header({
         name="back"
         cursor="pointer"
         size={controlSize}
-        color={color}
-        hoverColor={hoverColor}
+        color={colors.color}
+        hoverColor={colors.hoverColor}
         onClick={goToPreviousPage}
       />
-      <MonthAndYear color={color}>
+      <MonthAndYear color={colors.monthAndYear}>
         <span>{date.format(format)}</span>
       </MonthAndYear>
       <Icon
         name="forward"
         cursor="pointer"
         size={controlSize}
-        color={color}
-        hoverColor={hoverColor}
+        color={colors.color}
+        hoverColor={colors.hoverColor}
         onClick={goToNextPage}
       />
     </Container>
@@ -39,8 +38,6 @@ function Header({
 
 Header.defaultProps = {
   controlSize: '14px',
-  color: '#A569ED',
-  hoverColor: '#7546AE',
   format: 'MMMM YYYY',
 };
 

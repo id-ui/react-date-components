@@ -313,3 +313,11 @@ export interface TimeInputProps extends TimePickerProps {
 }
 
 export class TimeInput extends React.Component<TimeInputProps> {}
+
+export type DAY_STATES = {
+    default: string;
+    current: string;
+    active: string;
+    hover: string;
+    disabled: string;
+}

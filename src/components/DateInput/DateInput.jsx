@@ -18,6 +18,7 @@ function DateInput({
   renderWeek,
   renderDay,
   headerFormat,
+  colors,
   ...inputProps
 }) {
   const inputRef = useRef();
@@ -69,6 +70,7 @@ function DateInput({
           renderWeek={renderWeek}
           renderDay={renderDay}
           headerFormat={headerFormat}
+          colors={colors}
         />
       }
       placement="bottom"
@@ -90,6 +92,7 @@ function DateInput({
         onFocus={handleFocus}
         ref={inputRef}
         isActive={isOpen}
+        colors={colors.input}
         {...inputProps}
       />
     </Popover>
