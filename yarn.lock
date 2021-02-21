@@ -1208,10 +1208,10 @@
     styled-components "^5.2.1"
     styled-tools "^1.7.2"
 
-"@idui/react-popover@^1.1.14":
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/@idui/react-popover/-/react-popover-1.1.14.tgz#866eaa556eb7636eb63e3844770a0377822b779c"
-  integrity sha512-7xscqDJAo5KfyksU6WcH/u+lImIGSFVryF8Zx27/1bIZ5cdR/UQVf0XCqXWiLSRM1tcvN9C0V2FGQvQAy+EzGA==
+"@idui/react-popover@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@idui/react-popover/-/react-popover-1.2.1.tgz#015cc755c43b6fe29424b0eab58f68385f6ae10e"
+  integrity sha512-uBfTIBhYxqYPmNagMsySIyOgeo86xzwCQlI9Chj099OS4z+Jqjcfu9wEpndDW7tH+2j2Jm0jeRwfXU2gpHxagQ==
   dependencies:
     framer-motion "^1.11.1"
     lodash "^4.17.20"

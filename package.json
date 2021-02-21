@@ -102,7 +102,7 @@
   "dependencies": {
     "@idui/react-icon": "^1.0.5",
     "@idui/react-inputs": "^1.1.10",
-    "@idui/react-popover": "^1.1.14",
+    "@idui/react-popover": "^1.2.1",
     "framer-motion": "^3.1.4",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",

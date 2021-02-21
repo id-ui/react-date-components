@@ -131,6 +131,7 @@ function DateRangeInput({
       onChangeOpen={handleChangeOpen}
       closeOnEnter
       closeOnEscape
+      closeOnTab
       lazy={false}
     >
       <InputsWrapper colors={colors} className={className}>

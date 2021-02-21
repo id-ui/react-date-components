@@ -69,6 +69,7 @@ function TimeInput({
       onChangeOpen={handleChangeOpen}
       closeOnEnter
       closeOnEscape
+      closeOnTab
       lazy={false}
     >
       <Input
