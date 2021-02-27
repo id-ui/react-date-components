@@ -87,6 +87,7 @@ function Input(
       fitWidthToMask
       onChange={onChange}
       processPastedValue={processPastedValue}
+      colors={colors}
       {...props}
     />
   );
