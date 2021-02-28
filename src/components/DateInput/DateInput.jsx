@@ -73,7 +73,7 @@ function DateInput({
           colors={colors}
         />
       }
-      placement="bottom"
+      placement="bottomRight"
       guessBetterPosition
       trigger="click"
       isOpen={isOpen}
