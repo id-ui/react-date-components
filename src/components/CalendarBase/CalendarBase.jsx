@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { WEEK_DAYS } from 'config/constants';
@@ -16,19 +16,16 @@ function CalendarBase({
   renderWeek,
   colors,
 }) {
-  const updateMonth = useCallback(
-    (direction) => {
-      const newDate = date
+  const updateMonth = (direction) => {
+    const newDate = date
         .clone()
         .set({ month: date.month() + direction, date: 1 });
 
-      onChangePage(newDate);
-    },
-    [date, onChangePage]
-  );
+    onChangePage(newDate);
+  }
 
-  const goToPreviousPage = useCallback(() => updateMonth(-1), [updateMonth]);
-  const goToNextPage = useCallback(() => updateMonth(1), [updateMonth]);
+  const goToPreviousPage = () => updateMonth(-1)
+  const goToNextPage = () => updateMonth(1)
 
   return (
     <Fragment>

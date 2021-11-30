@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
@@ -25,13 +25,10 @@ function DatePicker({
     setDate(getCalendarDate(value));
   }, [value]);
 
-  const handleChangePage = useCallback(
-    (newDate) => {
-      setDate(newDate);
-      onChangePage(newDate);
-    },
-    [onChangePage]
-  );
+  const handleChangePage = (newDate) => {
+    setDate(newDate);
+    onChangePage(newDate);
+  }
 
   return (
     <CalendarBase

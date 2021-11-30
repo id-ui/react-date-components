@@ -86,31 +86,28 @@ function TimePicker({
     timeSlot,
   ]);
 
-  const handleScroll = useCallback(
-    (e) => {
-      const { scrollTop, clientHeight } = e.target;
-      const childHeight = e.target.firstElementChild.clientHeight;
-      const newActiveElementIndex = Math.floor(
+  const handleScroll = (e) => {
+    const { scrollTop, clientHeight } = e.target;
+    const childHeight = e.target.firstElementChild.clientHeight;
+    const newActiveElementIndex = Math.floor(
         (scrollTop + clientHeight / 2) / childHeight
-      );
-      const newValue = _.get(options[newActiveElementIndex], valueKey);
-      if (value !== newValue) {
-        onChange(newValue);
-      }
-    },
-    [valueKey, value, onChange, options]
-  );
+    );
+    const newValue = _.get(options[newActiveElementIndex], valueKey);
+    if (value !== newValue) {
+      onChange(newValue);
+    }
+  }
 
-  const handleTimeItemClick = useCallback((index) => {
+  const handleTimeItemClick = (index) => {
     const {
       firstElementChild: { clientHeight: childHeight },
       clientHeight: containerHeight,
     } = containerRef.current;
     containerRef.current.scrollTo(
-      0,
-      childHeight * (index + 0.5) - containerHeight / 2
+        0,
+        childHeight * (index + 0.5) - containerHeight / 2
     );
-  }, []);
+  }
 
   const selectedValue =
     _.isEmpty(value) && showDefaultSelectionIfNoValue

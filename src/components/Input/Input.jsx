@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import _ from 'lodash';
 import guessMomentFormat from 'moment-guess';
 import moment from 'moment';
@@ -38,11 +38,11 @@ function Input(
     [outputFormat]
   );
 
-  const mask = useMemo(() => outputFormat.replace(/\w/g, '9'), [outputFormat]);
+  const mask = outputFormat.replace(/\w/g, '9')
 
-  const setFocus = useCallback(() => {
-    ref.current?.focus();
-  }, [ref]);
+  const setFocus = () => {
+      ref.current?.focus();
+  }
 
   const processPastedValue = useCallback(
     (pastedValue, e) => {
@@ -99,4 +99,4 @@ InputWithRef.defaultProps = {
   type: 'date',
 };
 
-export default InputWithRef;
+export default React.memo(InputWithRef);

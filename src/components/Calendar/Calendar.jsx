@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { CalendarBase, Day } from 'components/CalendarBase';
 import { getDayState, toMoment } from 'helpers';
 
@@ -17,13 +17,10 @@ function Calendar({
     setDate(toMoment()(providedDate, true).startOf('day'));
   }, [providedDate]);
 
-  const handleChangeDate = useCallback(
-    (newDate) => {
+  const handleChangeDate = (newDate) => {
       setDate(newDate);
       onChangePage(newDate);
-    },
-    [onChangePage]
-  );
+  }
 
   return (
     <CalendarBase

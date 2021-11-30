@@ -25,13 +25,6 @@ function TimeInput({
 
   const [isOpen, setOpen] = useState(false);
 
-  const handleInputChange = useCallback(
-    (newValue) => {
-      onChange(newValue);
-    },
-    [onChange]
-  );
-
   const handleFocus = useCallback(() => {
     if (!isOpen) {
       setOpen(true);
@@ -75,7 +68,7 @@ function TimeInput({
       <Input
         type="time"
         value={value}
-        onChange={handleInputChange}
+        onChange={onChange}
         outputFormat={outputFormat}
         placeholder={placeholder}
         maskPlaceholder={maskPlaceholder}
