@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { WEEK_DAYS } from 'config/constants';
 import { colors } from 'config/theme';
@@ -18,14 +17,14 @@ function CalendarBase({
 }) {
   const updateMonth = (direction) => {
     const newDate = date
-        .clone()
-        .set({ month: date.month() + direction, date: 1 });
+      .clone()
+      .set({ month: date.month() + direction, date: 1 });
 
     onChangePage(newDate);
-  }
+  };
 
-  const goToPreviousPage = () => updateMonth(-1)
-  const goToNextPage = () => updateMonth(1)
+  const goToPreviousPage = () => updateMonth(-1);
+  const goToNextPage = () => updateMonth(1);
 
   return (
     <Fragment>
@@ -52,7 +51,7 @@ CalendarBase.propTypes = {
 };
 
 CalendarBase.defaultProps = {
-  onChangePage: _.noop,
+  onChangePage: () => {},
   headerFormat: 'MMMM YYYY',
   renderHeader: CalendarHeader,
   colors,

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import _ from 'lodash';
+import { reject, get, isEmpty, isUndefined } from 'lodash';
 import PropTypes from 'prop-types';
 import { colors } from 'config/theme';
 import { Container } from './styled';
@@ -56,7 +56,7 @@ function TimePicker({
 
     const optionsBeforeActiveCount = Math.floor(visibleOptionsCount / 2);
 
-    const filteredOptions = _.reject(allOptions, isTimeDisabled).map(
+    const filteredOptions = reject(allOptions, isTimeDisabled).map(
       (option, index) => ({
         ...option,
         index: optionsBeforeActiveCount + index,
@@ -90,13 +90,13 @@ function TimePicker({
     const { scrollTop, clientHeight } = e.target;
     const childHeight = e.target.firstElementChild.clientHeight;
     const newActiveElementIndex = Math.floor(
-        (scrollTop + clientHeight / 2) / childHeight
+      (scrollTop + clientHeight / 2) / childHeight
     );
-    const newValue = _.get(options[newActiveElementIndex], valueKey);
+    const newValue = get(options[newActiveElementIndex], valueKey);
     if (value !== newValue) {
       onChange(newValue);
     }
-  }
+  };
 
   const handleTimeItemClick = (index) => {
     const {
@@ -104,13 +104,13 @@ function TimePicker({
       clientHeight: containerHeight,
     } = containerRef.current;
     containerRef.current.scrollTo(
-        0,
-        childHeight * (index + 0.5) - containerHeight / 2
+      0,
+      childHeight * (index + 0.5) - containerHeight / 2
     );
-  }
+  };
 
   const selectedValue =
-    _.isEmpty(value) && showDefaultSelectionIfNoValue
+    isEmpty(value) && showDefaultSelectionIfNoValue
       ? defaultSelectedValue ||
         options[Math.floor(visibleOptionsCount / 2)].value
       : value;
@@ -124,11 +124,11 @@ function TimePicker({
       className={className}
     >
       {options.map((option, index) => {
-        const optionValue = _.get(option, valueKey);
+        const optionValue = get(option, valueKey);
         return renderOption({
           key: `${index}-${optionValue}-${option.withRedirect}`,
           isSelected: selectedValue === optionValue,
-          onClick: _.isUndefined(option.index)
+          onClick: isUndefined(option.index)
             ? undefined
             : () => handleTimeItemClick(option.index),
           data: option,
@@ -162,8 +162,8 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
   timeSlot: 60,
-  onChange: _.noop,
-  isTimeDisabled: _.constant(false),
+  onChange: () => {},
+  isTimeDisabled: () => false,
   valueKey: 'value',
   labelKey: 'label',
   outputFormat: 'HH:mm',

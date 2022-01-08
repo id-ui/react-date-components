@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import _ from 'lodash';
+import { get } from 'lodash';
 import { CalendarBase } from 'components/CalendarBase';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ function DateRangePicker({
   colors,
   ...props
 }) {
-  const [date, setDate] = useState(() => _.get(providedValue, 0) || moment());
+  const [date, setDate] = useState(() => get(providedValue, 0) || moment());
 
   const { value, ...rangeHandlers } = useRange({
     value: providedValue,
@@ -67,8 +67,8 @@ DateRangePickerWrapped.propTypes = {
 
 DateRangePickerWrapped.defaultProps = {
   ...CalendarBase.defaultProps,
-  onChange: _.noop,
-  isDateDisabled: _.constant(false),
+  onChange: () => {},
+  isDateDisabled: () => false,
   renderDay: ({ date, state, colors, ...handlers }) => (
     <DatePickerDay state={state} colors={colors} {...handlers}>
       {date.date()}

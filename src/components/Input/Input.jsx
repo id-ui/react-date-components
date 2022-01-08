@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
 import guessMomentFormat from 'moment-guess';
 import moment from 'moment';
 import { TextInput } from '@idui/react-inputs';
@@ -38,15 +38,15 @@ function Input(
     [outputFormat]
   );
 
-  const mask = outputFormat.replace(/\w/g, '9')
+  const mask = outputFormat.replace(/\w/g, '9');
 
   const setFocus = () => {
-      ref.current?.focus();
-  }
+    ref.current?.focus();
+  };
 
   const processPastedValue = useCallback(
     (pastedValue, e) => {
-      if (type === 'time' || !_.isEmpty(e.target.value)) {
+      if (type === 'time' || !isEmpty(e.target.value)) {
         return pastedValue;
       }
 

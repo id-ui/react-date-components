@@ -1,6 +1,5 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import moment from 'moment';
 import { CalendarBase } from 'components/CalendarBase';
 import { getDayState } from 'helpers';
@@ -28,7 +27,7 @@ function DatePicker({
   const handleChangePage = (newDate) => {
     setDate(newDate);
     onChangePage(newDate);
-  }
+  };
 
   return (
     <CalendarBase
@@ -61,8 +60,8 @@ DatePickerWrapped.propTypes = {
 
 DatePickerWrapped.defaultProps = {
   ...CalendarBase.defaultProps,
-  onChange: _.noop,
-  isDateDisabled: _.constant(false),
+  onChange: () => {},
+  isDateDisabled: () => false,
   renderDay: ({ date, state, onClick, colors }) => (
     <DatePickerDay state={state} onClick={onClick} colors={colors}>
       {date.date()}

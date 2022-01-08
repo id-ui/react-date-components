@@ -1187,10 +1187,10 @@
     styled-components "^5.2.1"
     styled-tools "^1.7.2"
 
-"@idui/react-inputs@^1.1.11":
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/@idui/react-inputs/-/react-inputs-1.1.11.tgz#a93bd77b564110cf3a57b46b08f6a6c288a67200"
-  integrity sha512-zcXRLjYshxWmKZLjV6UXtKGRwR3idyMEpElUD+9JBALXP2nFWCqFIh8eN+UuRC4C694K+eTO6wO0NIV6dIgsoA==
+"@idui/react-inputs@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@idui/react-inputs/-/react-inputs-1.1.12.tgz#28d772429e36ca879136775d03edbbce0384f922"
+  integrity sha512-oFN61DuI2EEm4xgJyM86trJvYrmCgjfgdNbAAN8FG/tGFfZskrW4TL6R8Pg+l3ISuDpOZrJP5MNKoKc8zgNuqw==
   dependencies:
     "@idui/react-icon" "^1.0.5"
     "@idui/react-mask-input" "^1.2.1"
@@ -1208,10 +1208,10 @@
     styled-components "^5.2.1"
     styled-tools "^1.7.2"
 
-"@idui/react-popover@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@idui/react-popover/-/react-popover-1.2.5.tgz#4c3bd7eb8b941705814abe9db2d9ec0506f01516"
-  integrity sha512-P1Sb5avSFnHg+1tDzq6XoonOMUsjrZBXDsJmX+t0Fd/Ne3N+sXqzCOwHdYlNLwociH/vH+WMyNeZUrc1FKsobQ==
+"@idui/react-popover@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@idui/react-popover/-/react-popover-1.2.6.tgz#3472add106b44524da02c71a7518d66fa16e76e8"
+  integrity sha512-peLeCmeIVnLyylIiDYDWx3YueCMt5meniChjh03lqo4KsX/8fftWCc+TZdw7pFAIq0DzKUfxzUsNn/UM7Ct9fA==
   dependencies:
     framer-motion "^1.11.1"
     lodash "^4.17.20"

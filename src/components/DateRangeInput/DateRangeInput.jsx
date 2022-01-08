@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import _ from 'lodash';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Popover from '@idui/react-popover';
@@ -40,21 +40,21 @@ function DateRangeInput({
 
   const handleStartOfRangeInputChange = useCallback(
     (newLeftInputValue) => {
-      if (newLeftInputValue === _.get(value, 0, '')) {
+      if (newLeftInputValue === get(value, 0, '')) {
         return;
       }
       const isValueDisabled =
         newLeftInputValue &&
         isDateDisabled(moment(newLeftInputValue, outputFormat).startOf('day'));
       if (isValueDisabled) {
-        // TODO: clear value not working without it.. replace block to onChange(['',  _.get(value, INPUT_INDEXES.end, '')]) after fix
-        onChange([newLeftInputValue, _.get(value, INPUT_INDEXES.end, '')]);
+        // TODO: clear value not working without it.. replace block to onChange(['',  get(value, INPUT_INDEXES.end, '')]) after fix
+        onChange([newLeftInputValue, get(value, INPUT_INDEXES.end, '')]);
         setTimeout(() => {
-          onChange(['', _.get(value, INPUT_INDEXES.end, '')]);
+          onChange(['', get(value, INPUT_INDEXES.end, '')]);
         }, 0);
         // TODO: end
       } else {
-        onChange([newLeftInputValue, _.get(value, INPUT_INDEXES.end, '')]);
+        onChange([newLeftInputValue, get(value, INPUT_INDEXES.end, '')]);
         if (newLeftInputValue) {
           endOfRangeInputRef.current?.focus();
         }
@@ -65,14 +65,14 @@ function DateRangeInput({
 
   const handleEndOfRangeInputChange = useCallback(
     (newRightInputValue) => {
-      if (newRightInputValue === _.get(value, 1, '')) {
+      if (newRightInputValue === get(value, 1, '')) {
         return;
       }
       const isValueDisabled = isDateDisabled(
         moment(newRightInputValue, outputFormat).startOf('day')
       );
       onChange([
-        _.get(value, INPUT_INDEXES.start, ''),
+        get(value, INPUT_INDEXES.start, ''),
         isValueDisabled ? '' : newRightInputValue,
       ]);
     },
@@ -137,7 +137,7 @@ function DateRangeInput({
       <InputsWrapper colors={colors} className={className}>
         <Input
           key={INPUT_INDEXES.start}
-          value={_.get(value, 0, '')}
+          value={get(value, 0, '')}
           onChange={handleStartOfRangeInputChange}
           outputFormat={outputFormat}
           placeholder={placeholder}
@@ -154,7 +154,7 @@ function DateRangeInput({
         />
         <Input
           key={INPUT_INDEXES.end}
-          value={_.get(value, 1, '')}
+          value={get(value, 1, '')}
           onChange={handleEndOfRangeInputChange}
           outputFormat={outputFormat}
           placeholder={placeholder}

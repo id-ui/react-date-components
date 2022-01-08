@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import inputArgs from 'components/Input/args';
-import _ from 'lodash';
+import { omit } from 'lodash';
 import dateRangePickerStory from '../DateRangePicker/dateRangePicker.stories';
 import DateRangeInput from './DateRangeInput';
 
@@ -37,7 +37,7 @@ export default {
         defaultValue: { summary: true },
       },
     },
-    ..._.omit(dateRangePickerStory.argTypes, [
+    ...omit(dateRangePickerStory.argTypes, [
       'value',
       'onChange',
       'outputFormat',

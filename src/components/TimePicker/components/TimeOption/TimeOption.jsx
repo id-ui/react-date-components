@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import { get } from 'lodash';
 import { Divider, Container, TimePart } from './styled';
 
 function TimeOption({
@@ -12,7 +12,7 @@ function TimeOption({
   withRedirect,
   colors,
 }) {
-  const itemLabel = _.get(data, labelKey);
+  const itemLabel = get(data, labelKey);
   const isEmpty = itemLabel === '';
 
   const [hours, minutes] = itemLabel.split(divider);

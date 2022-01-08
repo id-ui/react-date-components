@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import _ from 'lodash';
+import { omit } from 'lodash';
 import inputArgs from 'components/Input/args';
 import datePickerStory from 'components/DatePicker/datePicker.stories';
 import DateInput from './DateInput';
@@ -36,7 +36,7 @@ export default {
         defaultValue: { summary: true },
       },
     },
-    ..._.omit(datePickerStory.argTypes, ['value', 'onChange', 'outputFormat']),
+    ...omit(datePickerStory.argTypes, ['value', 'onChange', 'outputFormat']),
     ...inputArgs,
   },
 };

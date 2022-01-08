@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { last } from 'lodash';
 import { CURRENT_DATE } from 'config/constants';
 
 const HOURS_PER_DAY = 24;
@@ -26,10 +26,10 @@ export const getTimeOptions = ({
     }
   );
 
-  const last = _.last(result);
+  const lastOption = last(result);
 
-  if (last.value === `00${divider}00`) {
-    last.value = `24${divider}00`;
+  if (lastOption.value === `00${divider}00`) {
+    lastOption.value = `24${divider}00`;
   }
 
   return result;

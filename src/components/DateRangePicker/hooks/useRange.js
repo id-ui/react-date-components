@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { get } from 'lodash';
 import { useCallback, useEffect, useState } from 'react';
 
 export default ({ date, onChangePage, value: providedValue, onChange }) => {
@@ -20,7 +20,7 @@ export default ({ date, onChangePage, value: providedValue, onChange }) => {
 
   const handleChange = useCallback(
     (newValue, force) => {
-      if (!_.get(newValue, 0)) {
+      if (!get(newValue, 0)) {
         return;
       }
       if (force || !newValue[0].isSame(newValue[1])) {

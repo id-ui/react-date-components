@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CalendarBase, Day } from 'components/CalendarBase';
 import { getDayState, toMoment } from 'helpers';
 
@@ -18,9 +18,9 @@ function Calendar({
   }, [providedDate]);
 
   const handleChangeDate = (newDate) => {
-      setDate(newDate);
-      onChangePage(newDate);
-  }
+    setDate(newDate);
+    onChangePage(newDate);
+  };
 
   return (
     <CalendarBase

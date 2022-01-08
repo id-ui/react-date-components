@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import _ from 'lodash';
+import { get } from 'lodash';
 import { withProp } from 'styled-tools';
 import { DAY_STATES } from 'config/constants';
 
@@ -19,8 +19,8 @@ export const Day = styled.div`
   ${withProp(['colors', 'state'], (colors, state) =>
     colors
       ? css`
-          color: ${_.get(colors, [state, 'color'])};
-          background-color: ${_.get(colors, [state, 'background'])};
+          color: ${get(colors, [state, 'color'])};
+          background-color: ${get(colors, [state, 'background'])};
           ${state === DAY_STATES.default &&
           css`
             &:hover {
